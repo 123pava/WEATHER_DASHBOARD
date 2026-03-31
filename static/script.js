@@ -1,5 +1,3 @@
-const apiKey = "0f09cc6647227a6abd1c360efaf3ed1b";
-
 function renderError(message) {
     document.getElementById("result").innerHTML = `<div class="result-error">${message}</div>`;
 }
@@ -85,26 +83,16 @@ function getLocationWeather() {
 function success(position) {
     const lat = position.coords.latitude;
     const lon = position.coords.longitude;
-    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
 
-    fetch(url)
+    fetch(`/weather/location?lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}`)
         .then((response) => response.json())
         .then((data) => {
-            if (data.cod && Number(data.cod) !== 200) {
-                renderError(data.message || "Unable to fetch weather for your location.");
+            if (data.error) {
+                renderError(data.error);
                 return;
             }
 
-            renderWeatherCard({
-                city: data.name,
-                temperature: data.main.temp,
-                feels_like: data.main.feels_like,
-                description: data.weather[0].description,
-                humidity: data.main.humidity,
-                wind: data.wind.speed,
-                pressure: data.main.pressure,
-                icon: data.weather[0].icon,
-            });
+            renderWeatherCard(data);
         })
         .catch(() => {
             renderError("Error getting location weather.");

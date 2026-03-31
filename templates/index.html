@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <main class="app-shell">
+        <section class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow">Live Weather Dashboard</p>
+                <h1>Clean, responsive weather insights for every screen.</h1>
+                <p class="hero-text">
+                    Search any city, use your current location, or try voice search to get
+                    a polished weather summary with the details that matter most.
+                </p>
+
+                <div class="search-panel">
+                    <div class="search-row">
+                        <input id="city" placeholder="Enter city name" aria-label="City name">
+                        <button type="button" onclick="getWeather()">Search</button>
+                    </div>
+
+                    <div class="action-row">
+                        <button type="button" class="ghost-btn" onclick="getLocationWeather()">Use My Location</button>
+                        <button type="button" class="ghost-btn" onclick="startVoice()">Voice Search</button>
+                        <button type="button" class="ghost-btn" onclick="toggleMode()">Toggle Theme</button>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="hero-card">
+                <div class="status-row">
+                    <span class="status-badge">Today</span>
+                    <span class="status-time">Real-time conditions</span>
+                </div>
+                <div class="hero-summary">
+                    <p class="summary-label">Dashboard ready</p>
+                    <h2>Weather</h2>
+                    <p class="summary-text">
+                        Your result card will appear below with temperature, humidity,
+                        pressure, wind, and condition details.
+                    </p>
+                </div>
+                <div class="hero-glow"></div>
+            </aside>
+        </section>
+
+        <section class="content-grid">
+            <section class="panel result-panel">
+                <div class="panel-head">
+                    <div>
+                        <p class="panel-kicker">Current Report</p>
+                        <h3>Weather Overview</h3>
+                    </div>
+                    <span class="panel-note">Search to update</span>
+                </div>
+
+                <div id="result" class="result-state">
+                    <div class="empty-card">
+                        <p class="empty-title">No weather selected yet</p>
+                        <p class="empty-text">
+                            Enter a city name or use your location to load the live weather card here.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel info-panel">
+                <div class="panel-head">
+                    <div>
+                        <p class="panel-kicker">Features</p>
+                        <h3>Quick Actions</h3>
+                    </div>
+                </div>
+
+                <div class="feature-list">
+                    <article class="feature-item">
+                        <span>City Search</span>
+                        <strong>Find weather instantly by city name</strong>
+                    </article>
+                    <article class="feature-item">
+                        <span>Location Mode</span>
+                        <strong>Use device GPS for current local weather</strong>
+                    </article>
+                    <article class="feature-item">
+                        <span>Voice Input</span>
+                        <strong>Speak a city name for faster search</strong>
+                    </article>
+                    <article class="feature-item">
+                        <span>Theme Switch</span>
+                        <strong>Toggle the interface for a darker mood</strong>
+                    </article>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

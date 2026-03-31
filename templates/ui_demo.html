@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard UI Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/ui-demo.css">
+</head>
+<body>
+    <main class="demo-shell">
+        <section class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow">Responsive Modern UI Demo</p>
+                <h1>Weather that feels like a live product, not just a form.</h1>
+                <p class="hero-text">
+                    This preview shows how your dashboard can look with a cleaner structure,
+                    stronger typography, adaptive cards, and a layout that works well on both desktop and mobile.
+                </p>
+
+                <div class="search-panel">
+                    <div class="search-row">
+                        <input type="text" placeholder="Search city or airport">
+                        <button>Search</button>
+                    </div>
+                    <div class="chip-row">
+                        <span class="chip active">Bengaluru</span>
+                        <span class="chip">Chennai</span>
+                        <span class="chip">Mumbai</span>
+                        <span class="chip">Use my location</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-card">
+                <div class="status-row">
+                    <span class="status-badge">Live Conditions</span>
+                    <span class="status-time">Tuesday, 6:45 PM</span>
+                </div>
+                <div class="temp-row">
+                    <div>
+                        <p class="city-name">Bengaluru</p>
+                        <h2>27<span>°</span></h2>
+                        <p class="condition">Clear sky with warm evening air</p>
+                    </div>
+                    <div class="weather-orb"></div>
+                </div>
+                <div class="metrics-grid">
+                    <article class="metric">
+                        <span>Feels like</span>
+                        <strong>29°</strong>
+                    </article>
+                    <article class="metric">
+                        <span>Humidity</span>
+                        <strong>61%</strong>
+                    </article>
+                    <article class="metric">
+                        <span>Wind</span>
+                        <strong>12 km/h</strong>
+                    </article>
+                    <article class="metric">
+                        <span>Pressure</span>
+                        <strong>1008 hPa</strong>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="dashboard-grid">
+            <article class="panel forecast-panel">
+                <div class="panel-head">
+                    <h3>Next 5 Hours</h3>
+                    <span>Hourly view</span>
+                </div>
+                <div class="forecast-strip">
+                    <div class="forecast-card">
+                        <span>7 PM</span>
+                        <strong>27°</strong>
+                        <small>Clear</small>
+                    </div>
+                    <div class="forecast-card">
+                        <span>8 PM</span>
+                        <strong>26°</strong>
+                        <small>Breeze</small>
+                    </div>
+                    <div class="forecast-card">
+                        <span>9 PM</span>
+                        <strong>25°</strong>
+                        <small>Clear</small>
+                    </div>
+                    <div class="forecast-card">
+                        <span>10 PM</span>
+                        <strong>24°</strong>
+                        <small>Clouds</small>
+                    </div>
+                    <div class="forecast-card">
+                        <span>11 PM</span>
+                        <strong>23°</strong>
+                        <small>Clouds</small>
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel highlights-panel">
+                <div class="panel-head">
+                    <h3>Highlights</h3>
+                    <span>Daily summary</span>
+                </div>
+                <div class="highlight-list">
+                    <div class="highlight">
+                        <span>Sunrise</span>
+                        <strong>06:11 AM</strong>
+                    </div>
+                    <div class="highlight">
+                        <span>Sunset</span>
+                        <strong>06:31 PM</strong>
+                    </div>
+                    <div class="highlight">
+                        <span>Visibility</span>
+                        <strong>8 km</strong>
+                    </div>
+                    <div class="highlight">
+                        <span>Air Quality</span>
+                        <strong>Moderate</strong>
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel week-panel">
+                <div class="panel-head">
+                    <h3>This Week</h3>
+                    <span>7-day outlook</span>
+                </div>
+                <div class="week-list">
+                    <div class="week-row"><span>Wed</span><small>Sunny</small><strong>29° / 21°</strong></div>
+                    <div class="week-row"><span>Thu</span><small>Cloudy</small><strong>28° / 22°</strong></div>
+                    <div class="week-row"><span>Fri</span><small>Rain</small><strong>25° / 20°</strong></div>
+                    <div class="week-row"><span>Sat</span><small>Showers</small><strong>24° / 19°</strong></div>
+                    <div class="week-row"><span>Sun</span><small>Bright</small><strong>27° / 20°</strong></div>
+                </div>
+            </article>
+        </section>
+    </main>
+</body>
+</html>

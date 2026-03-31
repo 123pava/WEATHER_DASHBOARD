@@ -1,0 +1,350 @@
+:root {
+    --bg: #08141f;
+    --bg-soft: #102538;
+    --panel: rgba(10, 27, 41, 0.74);
+    --panel-strong: rgba(14, 33, 49, 0.92);
+    --line: rgba(170, 215, 255, 0.12);
+    --text: #ecf7ff;
+    --muted: #9dc0d8;
+    --accent: #7ee0ff;
+    --accent-strong: #20b9e8;
+    --warm: #ffc977;
+    --shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Manrope", sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(circle at top left, rgba(32, 185, 232, 0.24), transparent 32%),
+        radial-gradient(circle at 85% 18%, rgba(255, 201, 119, 0.14), transparent 24%),
+        linear-gradient(160deg, #06111b 0%, #0b1f30 48%, #123149 100%);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 34px 34px;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.45), transparent 78%);
+    pointer-events: none;
+}
+
+body.dark-mode {
+    background:
+        radial-gradient(circle at top left, rgba(173, 216, 230, 0.16), transparent 28%),
+        radial-gradient(circle at 85% 18%, rgba(255, 219, 136, 0.1), transparent 18%),
+        linear-gradient(160deg, #05090f 0%, #0b1118 46%, #101822 100%);
+}
+
+.app-shell {
+    position: relative;
+    width: min(1180px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 40px 0 56px;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 24px;
+    align-items: stretch;
+    margin-bottom: 24px;
+}
+
+.hero-copy,
+.hero-card,
+.panel,
+.card,
+.empty-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    background: var(--panel);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(16px);
+}
+
+.hero-copy,
+.hero-card,
+.panel {
+    padding: 28px;
+}
+
+.eyebrow,
+.panel-kicker,
+.summary-label {
+    margin: 0 0 14px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.74rem;
+    font-weight: 800;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+    font-family: "Space Grotesk", sans-serif;
+}
+
+h1 {
+    max-width: 12ch;
+    font-size: clamp(2.5rem, 4vw, 4.7rem);
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+}
+
+.hero-text,
+.summary-text,
+.empty-text,
+.feature-item span,
+.panel-note,
+.status-time {
+    color: var(--muted);
+}
+
+.hero-text,
+.summary-text {
+    margin: 18px 0 0;
+    line-height: 1.7;
+}
+
+.search-panel {
+    margin-top: 28px;
+    padding: 18px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.search-row,
+.action-row,
+.status-row,
+.panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.search-row {
+    align-items: stretch;
+}
+
+input {
+    flex: 1;
+    min-width: 0;
+    padding: 16px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text);
+    font: inherit;
+    outline: none;
+}
+
+input::placeholder {
+    color: rgba(236, 247, 255, 0.56);
+}
+
+button {
+    border: 0;
+    border-radius: 18px;
+    padding: 14px 20px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+    color: #062131;
+    font: inherit;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.18s ease, opacity 0.18s ease, background 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-1px);
+}
+
+.ghost-btn {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    font-weight: 700;
+}
+
+.action-row {
+    margin-top: 14px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.hero-card {
+    background:
+        radial-gradient(circle at 80% 18%, rgba(126, 224, 255, 0.18), transparent 22%),
+        radial-gradient(circle at 15% 12%, rgba(255, 201, 119, 0.18), transparent 18%),
+        var(--panel-strong);
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(126, 224, 255, 0.12);
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.hero-summary {
+    position: relative;
+    z-index: 1;
+    margin-top: 28px;
+}
+
+.hero-summary h2 {
+    font-size: clamp(3.5rem, 7vw, 5.4rem);
+    line-height: 0.92;
+    letter-spacing: -0.06em;
+}
+
+.hero-glow {
+    position: absolute;
+    right: 24px;
+    bottom: 24px;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 35% 35%, #fff9df 0%, #ffd281 28%, #ffb347 58%, rgba(255, 179, 71, 0.2) 100%);
+    box-shadow:
+        0 0 0 14px rgba(255, 201, 119, 0.08),
+        0 0 50px rgba(255, 201, 119, 0.35);
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 24px;
+}
+
+.result-state {
+    min-height: 320px;
+}
+
+.empty-card {
+    padding: 24px;
+}
+
+.empty-title {
+    margin: 0 0 10px;
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+.feature-list {
+    display: grid;
+    gap: 12px;
+}
+
+.feature-item,
+.card {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.feature-item {
+    padding: 18px;
+    border-radius: 20px;
+}
+
+.feature-item strong {
+    display: block;
+    margin-top: 6px;
+    font-size: 1rem;
+}
+
+.card {
+    padding: 24px;
+}
+
+.card h2 {
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    letter-spacing: -0.04em;
+}
+
+.card img {
+    width: 92px;
+    height: 92px;
+    display: block;
+    margin: 8px 0 12px;
+}
+
+.card p {
+    margin: 8px 0;
+    font-size: 1rem;
+    color: var(--text);
+}
+
+.result-error {
+    color: #ffd5d5;
+    background: rgba(120, 27, 40, 0.35);
+    border: 1px solid rgba(255, 155, 155, 0.2);
+    border-radius: 18px;
+    padding: 16px;
+}
+
+@media (max-width: 980px) {
+    .hero,
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .app-shell {
+        width: min(100% - 20px, 1180px);
+        padding: 18px 0 32px;
+    }
+
+    .hero-copy,
+    .hero-card,
+    .panel,
+    .card,
+    .empty-card {
+        padding: 18px;
+        border-radius: 22px;
+    }
+
+    h1 {
+        max-width: none;
+        font-size: 2.5rem;
+    }
+
+    .search-row,
+    .action-row,
+    .status-row,
+    .panel-head {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .hero-glow {
+        width: 96px;
+        height: 96px;
+    }
+}

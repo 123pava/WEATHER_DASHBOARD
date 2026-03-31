@@ -6,6 +6,7 @@ import requests
 app = Flask(__name__)
 
 API_KEY = os.getenv("OPENWEATHER_API_KEY")
+BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
 
 
 def build_weather_response(data):
@@ -21,14 +22,18 @@ def build_weather_response(data):
     }
 
 
+def fetch_weather(url):
+    try:
+        response = requests.get(url, timeout=10)
+        return response.json()
+    except requests.RequestException:
+        return {"cod": 500, "message": "Unable to reach weather service right now"}
+
+
 @app.route("/")
 def home():
     return render_template("index.html")
 
-
-@app.route("/ui-demo")
-def ui_demo():
-    return render_template("ui_demo.html")
 
 
 @app.route("/weather")
@@ -41,9 +46,8 @@ def get_weather():
     if not city:
         return jsonify({"error": "Please enter a city name"})
 
-    url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}&units=metric"
-    response = requests.get(url, timeout=10)
-    data = response.json()
+    url = f"{BASE_URL}?q={city}&appid={API_KEY}&units=metric"
+    data = fetch_weather(url)
 
     if data.get("cod") != 200:
         return jsonify({"error": data.get("message", "City not found")})
@@ -62,9 +66,8 @@ def get_location_weather():
     if not lat or not lon:
         return jsonify({"error": "Latitude and longitude are required"})
 
-    url = f"http://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}&units=metric"
-    response = requests.get(url, timeout=10)
-    data = response.json()
+    url = f"{BASE_URL}?lat={lat}&lon={lon}&appid={API_KEY}&units=metric"
+    data = fetch_weather(url)
 
     if data.get("cod") != 200:
         return jsonify({"error": data.get("message", "Unable to fetch weather for your location")})
